@@ -116,6 +116,7 @@ This will create our task just like last time and we can open it.
 
 ```RUBY
 require 'json'
+require 'mechanize'
 
 ...
   def lobsters
