@@ -2,6 +2,13 @@
 module Main
   class MainController < Volt::ModelController
     def index
+      LobsterTask.lobsters
+      .then do |stories|
+        puts stories
+        page._stories = stories
+      end.fail do |error|
+        page._stories = error
+      end
       StatTask.show_stats
       .then do |stats|
         page._info = stats

@@ -2,8 +2,12 @@
   Home
 
 <:Body>
-  <h1>Home</h1>
+  <h1>Lobsters</h1>
 
+  {{ page._stories._results.each do |story| }}
+    <h4><a href='{{ story._link }}'>
+    {{ story._title }}</a></h4>
+  {{ end }}
   <h2>Ruby Version</h2>
     <h4>{{ page._info._ruby_version }}</h4>
 
