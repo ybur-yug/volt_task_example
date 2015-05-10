@@ -117,7 +117,7 @@ This will create our task just like last time and we can open it.
 require 'json'
 
 ...
-  def lobsters_top
+  def lobsters
     JSON.parse(Mechanize.new.get('https://quiet-temple-1623.herokuapp.com/frontpage/1').content)
   end
 ...
@@ -139,7 +139,7 @@ And match that up with the `index` method on our controller:
 ```RUBY
 ...
     def index
-      LobstersTask.top
+      LobstersTask.lobsters
       .then do |stories|
         page._results = stories
       end.fail do |err|
