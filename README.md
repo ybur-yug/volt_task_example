@@ -122,6 +122,7 @@ require 'json'
   end
 ...
 ```
+##### [Source](https://github.com/ybur-yug/volt_task_example/blob/master/app/main/tasks/lobster_task.rb)
 
 Now we just go into our `index.html` for `main` and we can add some logic to display our stories.
 
@@ -133,6 +134,7 @@ Now we just go into our `index.html` for `main` and we can add some logic to dis
   {{ end }}
 ...
 ```
+##### [Source](https://github.com/ybur-yug/volt_task_example/blob/master/app/main/views/main/index.html#L7)
 
 And match that up with the `index` method on our controller:
 
@@ -148,6 +150,8 @@ And match that up with the `index` method on our controller:
     end
 ...
 ```
+##### [Source](https://github.com/ybur-yug/volt_task_example/blob/master/app/main/controllers/main_controller.rb#L5)
+
 And now we've successfully executed code on only the server, and fed it to the client once the task was completed
 communicating both with 3rd party API's and our own server.
 
