@@ -94,6 +94,61 @@ Now if we go to our client code in `app/main/views/main/index.html`, we have cre
 ```
 ##### [Source](https://github.com/ybur-yug/volt_task_example/blob/master/app/main/views/main/index.html#L7)
 
-And now we've successfully executed code on only the server, and fed it to the client once the task was completed.
+
+## Going Further
+Let's say we had a simple API we could hit and wanted to grab some data. As an example, I have created [this](https://quiet-temple-1623.herokuapp.com/frontpage/1).
+It is a simple wrapper for [Lobste.rs](http://lobste.rs) that returns some JSON of the top stories in a `results`
+key. Using another Task we can mirror the frontpage of the site hitting this API. First, we need to add Mechanize
+to our Gemfile to easily get web responses.
+
+```RUBY
+...
+gem 'mechanize'
+...
+```
+
+`bundle install` and we are ready to get going if we generate another task.
+
+`volt generate task lobsters`
+
+This will create our task just like last time and we can open it.
+
+```RUBY
+require 'json'
+
+...
+  def lobsters
+    JSON.parse(Mechanize.new.get('https://quiet-temple-1623.herokuapp.com/frontpage/1').content)
+  end
+...
+```
+
+Now we just go into our `index.html` for `main` and we can add some logic to display our stories.
+
+```RUBY
+...
+  {{ page._lobsters._results.each do |story|
+    <h4><a href='{{ story._url }}'>
+    {{ story._title }}</a></h4>
+  {{ end }}
+...
+```
+
+And match that up with the `index` method on our controller:
+
+```RUBY
+...
+    def index
+      LobstersTask.lobsters
+      .then do |stories|
+        page._results = stories
+      end.fail do |err|
+        page._results = err
+      end
+    end
+...
+```
+And now we've successfully executed code on only the server, and fed it to the client once the task was completed
+communicating both with 3rd party API's and our own server.
 
 Happy Hacking.
