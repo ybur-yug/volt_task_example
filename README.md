@@ -96,6 +96,4 @@ Now if we go to our client code in `app/main/views/main/index.html`, we have cre
 
 And now we've successfully executed code on only the server, and fed it to the client once the task was completed.
 
-#### [Source Code](https://github.com/ybur-yug/volt_task_example)
-
 Happy Hacking.
