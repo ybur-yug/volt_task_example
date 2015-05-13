@@ -155,6 +155,8 @@ And match that up with the `index` method on our controller:
 ##### [Source](https://github.com/ybur-yug/volt_task_example/blob/master/app/main/controllers/main_controller.rb#L5)
 
 And now we've successfully executed code on only the server, and fed it to the client once the task was completed
-communicating both with 3rd party API's and our own server.
+communicating both with 3rd party API's and our own server. 
+
+##### [Here](http://young-harbor-8245.herokuapp.com/) is a deployed version of the final app.
 
 Happy Hacking.
