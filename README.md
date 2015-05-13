@@ -106,6 +106,7 @@ to our Gemfile to easily get web responses.
 gem 'mechanize'
 ...
 ```
+##### [Source](https://github.com/ybur-yug/volt_task_example/blob/master/Gemfile#L31)
 
 `bundle install` and we are ready to get going if we generate another task.
 
@@ -115,6 +116,7 @@ This will create our task just like last time and we can open it.
 
 ```RUBY
 require 'json'
+require 'mechanize'
 
 ...
   def lobsters
@@ -122,6 +124,7 @@ require 'json'
   end
 ...
 ```
+##### [Source](https://github.com/ybur-yug/volt_task_example/blob/master/app/main/tasks/lobster_task.rb)
 
 Now we just go into our `index.html` for `main` and we can add some logic to display our stories.
 
@@ -133,6 +136,7 @@ Now we just go into our `index.html` for `main` and we can add some logic to dis
   {{ end }}
 ...
 ```
+##### [Source](https://github.com/ybur-yug/volt_task_example/blob/master/app/main/views/main/index.html#L7)
 
 And match that up with the `index` method on our controller:
 
@@ -148,7 +152,11 @@ And match that up with the `index` method on our controller:
     end
 ...
 ```
+##### [Source](https://github.com/ybur-yug/volt_task_example/blob/master/app/main/controllers/main_controller.rb#L5)
+
 And now we've successfully executed code on only the server, and fed it to the client once the task was completed
-communicating both with 3rd party API's and our own server.
+communicating both with 3rd party API's and our own server. 
+
+##### [Here](http://young-harbor-8245.herokuapp.com/) is a deployed version of the final app.
 
 Happy Hacking.
