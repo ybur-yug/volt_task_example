@@ -18,8 +18,8 @@ This is what you should see after creating your first application:
 ![step 1](http://i.imgur.com/ujb4F0E.gif)
 
 Now that we have a project, we can fire up our server and have the application start to run. One of the best things about
-development in Volt is the server will automatically reload your new code. So, start a server in a separate terminal and 
-proceed to generate a task now. 
+development in Volt is the server will automatically reload your new code. So, start a server in a separate terminal and
+proceed to generate a task now.
 
 (in a new terminal)
 `bundle exec volt s`
@@ -59,8 +59,8 @@ asynchronously on the backend.
 
 
 Now, this method is an instance level method. However, to call it in our controller Volt has a slightly different convention
-than the norm when it comes to invoking this. It is also worth noting that even though we are writing it as a Ruby hash, it 
-will be coerced into a Volt model on the frontend. This becomes an important detail 
+than the norm when it comes to invoking this. It is also worth noting that even though we are writing it as a Ruby hash, it
+will be coerced into a Volt model on the frontend. This becomes an important detail
 
 If we navigate to our controller, we can begin to handle the output from this.
 
@@ -130,8 +130,8 @@ Now we just go into our `index.html` for `main` and we can add some logic to dis
 
 ```RUBY
 ...
-  {{ page._lobsters._results.each do |story|
-    <h4><a href='{{ story._url }}'>
+  {{ page._stories._results.each do |story| }}
+    <h4><a href='{{ story._link }}'>
     {{ story._title }}</a></h4>
   {{ end }}
 ...
@@ -145,9 +145,9 @@ And match that up with the `index` method on our controller:
     def index
       LobstersTask.lobsters
       .then do |stories|
-        page._results = stories
+        page._stories = stories
       end.fail do |err|
-        page._results = err
+        page._stories = err
       end
     end
 ...
@@ -155,7 +155,7 @@ And match that up with the `index` method on our controller:
 ##### [Source](https://github.com/ybur-yug/volt_task_example/blob/master/app/main/controllers/main_controller.rb#L5)
 
 And now we've successfully executed code on only the server, and fed it to the client once the task was completed
-communicating both with 3rd party API's and our own server. 
+communicating both with 3rd party API's and our own server.
 
 ##### [Here](http://young-harbor-8245.herokuapp.com/) is a deployed version of the final app.
 
